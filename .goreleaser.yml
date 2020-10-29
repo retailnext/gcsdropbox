@@ -1,0 +1,29 @@
+before:
+  hooks:
+    - go mod download
+    - go mod verify
+    - go generate ./...
+builds:
+  - env:
+      - CGO_ENABLED=0
+      - GO111MODULE=on
+    goos:
+      - linux
+    goarch:
+      - amd64
+nfpms:
+  - formats:
+      - deb
+    homepage: "https://github.com/retailnext/gcsdropbox"
+    license: "Apache 2.0"
+    maintainer: "RetailNext <eng-cloud@retailnext.net>"
+checksum:
+  name_template: 'checksums.txt'
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - '^chore\(ci\):'
+      - '^chore\(deps\):'
+      - '^docs:'
+      - '^test:'

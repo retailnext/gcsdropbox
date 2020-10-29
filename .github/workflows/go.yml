@@ -1,0 +1,50 @@
+name: Go
+on:
+  push:
+    tags:
+      - v*
+    branches:
+      - master
+  pull_request:
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    env:
+      CGO_ENABLED: '0'
+      GO111MODULE: 'on'
+    steps:
+      - name: Set up Go 1.x
+        uses: actions/setup-go@v2
+        with:
+          go-version: ^1.15
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Unshallow
+        if: startsWith(github.ref, 'refs/tags/')
+        run: git fetch --prune --unshallow
+      - name: Cache dependencies
+        uses: actions/cache@v2
+        with:
+          path: ~/go/pkg/mod
+          key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
+          restore-keys: |
+            ${{ runner.os }}-go-
+      - name: Download dependencies
+        run: go mod download
+      - name: Verify dependencies
+        run: go mod verify
+      - name: Build
+        run: go build -v ./...
+      - name: Test
+        run: go test -v ./...
+      - name: Clean
+        run: git clean -fdx
+      - name: GoReleaser
+        uses: goreleaser/goreleaser-action@v2
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          version: latest
+          args: release --rm-dist
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

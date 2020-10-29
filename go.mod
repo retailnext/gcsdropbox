@@ -1,0 +1,19 @@
+module github.com/retailnext/gcsdropbox
+
+go 1.15
+
+require (
+	cloud.google.com/go v0.70.0
+	cloud.google.com/go/storage v1.12.0
+	go.uber.org/multierr v1.6.0 // indirect
+	go.uber.org/zap v1.16.0
+	golang.org/x/crypto v0.0.0-20201016220609-9e8e0b390897
+	golang.org/x/net v0.0.0-20201029055024-942e2f445f3c // indirect
+	golang.org/x/sys v0.0.0-20201029080932-201ba4db2418 // indirect
+	golang.org/x/text v0.3.4 // indirect
+	golang.org/x/tools v0.0.0-20201029135353-690a3c245f28 // indirect
+	google.golang.org/api v0.34.0 // indirect
+	google.golang.org/appengine v1.6.7 // indirect
+	google.golang.org/genproto v0.0.0-20201028140639-c77dae4b0522
+	google.golang.org/grpc v1.33.1 // indirect
+)
