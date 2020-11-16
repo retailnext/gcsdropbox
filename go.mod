@@ -10,5 +10,5 @@ require (
 	golang.org/x/crypto v0.0.0-20201112155050-0c6587e931a9
 	golang.org/x/sys v0.0.0-20201029080932-201ba4db2418 // indirect
 	google.golang.org/appengine v1.6.7 // indirect
-	google.golang.org/genproto v0.0.0-20201113130914-ce600e9a6f9e
+	google.golang.org/genproto v0.0.0-20201116123041-bf037d74fda1
 )
