@@ -25,14 +25,14 @@ import (
 	credentials "cloud.google.com/go/iam/credentials/apiv1"
 	"cloud.google.com/go/storage"
 	"go.uber.org/zap"
-	"golang.org/x/crypto/ssh/terminal"
-	credentialspb "google.golang.org/genproto/googleapis/iam/credentials/v1"
+	"golang.org/x/term"
+	"cloud.google.com/go/iam/credentials/apiv1/credentialspb"
 )
 
 func setupLogger() func() {
 	var logger *zap.Logger
 	var err error
-	if terminal.IsTerminal(int(os.Stdin.Fd())) {
+	if term.IsTerminal(int(os.Stdin.Fd())) {
 		logger, err = zap.NewDevelopment()
 	} else {
 		logger, err = zap.NewProduction()
