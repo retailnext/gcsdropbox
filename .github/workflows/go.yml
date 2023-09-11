@@ -41,7 +41,7 @@ jobs:
       - name: Clean
         run: git clean -fdx
       - name: GoReleaser
-        uses: goreleaser/goreleaser-action@v4
+        uses: goreleaser/goreleaser-action@v5
         if: startsWith(github.ref, 'refs/tags/')
         with:
           version: latest
