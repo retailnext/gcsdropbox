@@ -3,7 +3,7 @@ module github.com/retailnext/gcsdropbox
 go 1.25.0
 
 require (
-	cloud.google.com/go/iam v1.9.0
+	cloud.google.com/go/iam v1.10.0
 	cloud.google.com/go/storage v1.62.1
 	go.uber.org/zap v1.28.0
 	golang.org/x/term v0.42.0
